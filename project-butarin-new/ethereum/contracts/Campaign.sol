@@ -52,7 +52,7 @@ contract Question {
     }
     
 
-    function submitSolutionDetails(address particpantAddress, uint gasUsed, string ipfsHash) public {
+    function submitSolutionDetails(address particpantAddress, string username, uint gasUsed, string ipfsHash) public {
         require(msg.sender == owner);
         Participant memory participant;
 
