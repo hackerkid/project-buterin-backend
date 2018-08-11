@@ -26,8 +26,9 @@ def handle_uploaded_file(f, file_name):
 
 @csrf_exempt
 def submit_code(request: HttpRequest):
-    question_id = request.POST["question_id"]
-    participant_id = request.POST["participant_id"]
+    question_id = request.POST["contractAddreess"]
+    participant_id = request.POST["userAddress"]
+    username = request.POST["username"]
 
     os.environ["question_id"] = question_id
     os.environ["participant_id"] = participant_id
@@ -37,8 +38,9 @@ def submit_code(request: HttpRequest):
     
     testcase_file = os.path.join(testcase_dir, question_id + ".js")
 
-    handle_uploaded_file(request.FILES['code'], solution_file)
+    handle_uploaded_file(request.FILES['solutionFile'], solution_file)
     call(["node_modules/mocha/bin/mocha", testcase_file])
+    call(["node project-butarin-new/ethereum/add-solution.js"])
 
     with open(gas_used_file, "r") as f:
         return HttpResponse(f.read())
