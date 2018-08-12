@@ -23,6 +23,10 @@ def handle_uploaded_file(solution, file_name):
 
     with open(file_name, 'w+') as destination:
         destination.write(solution)
+    
+    ciphertext, capsule = encrypt(alices_public_key, solution)
+
+    save_to_ipfs(ciphertext, capsule)
 
 @csrf_exempt
 def submit_code(request: HttpRequest):
@@ -49,3 +53,9 @@ def submit_code(request: HttpRequest):
 
     with open(gas_used_file, "r") as f:
         return HttpResponse(f.read())
+
+def save_to_ipfs(key, solution):
+    return None
+
+def encrypt(alices_public_key, solution):
+    return None
