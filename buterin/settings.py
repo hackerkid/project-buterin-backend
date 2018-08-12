@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost:9991", "localhost"]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+]
 
 # Application definition
 

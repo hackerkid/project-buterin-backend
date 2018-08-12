@@ -33,6 +33,7 @@ def submit_code(request: HttpRequest):
     solution = body["solutionFile"]
     
     os.environ["question_id"] = question_id
+    print(question_id)
     os.environ["username"] = username
     os.environ["participant_id"] = participant_id
 
